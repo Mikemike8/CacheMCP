@@ -1,4 +1,4 @@
-import { assets, PageHero, SiteFooter } from "../components/SiteChrome";
+import { assets, OptimizedImage, PageHero, SiteFooter } from "../components/SiteChrome";
 
 export default function AboutPage() {
   return (
@@ -17,7 +17,7 @@ export default function AboutPage() {
           we aim to deliver an authentic and memorable Caribbean experience right here in Memphis.
         </p>
         <button className="video-preview" type="button" aria-label="Play Cache 42 video">
-          <img src={assets.aboutVideo} alt="" />
+          <OptimizedImage image={assets.aboutVideo} alt="" sizes="(max-width: 760px) 90vw, 1039px" />
           <span />
         </button>
       </section>

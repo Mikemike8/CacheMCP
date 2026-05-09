@@ -1,37 +1,66 @@
+import type { ImgHTMLAttributes } from "react";
 import Link from "next/link";
 
+type ResponsiveImageAsset = {
+  src: string;
+  srcSet: string;
+  width: number;
+  height: number;
+};
+
+type OptimizedImageProps = Omit<
+  ImgHTMLAttributes<HTMLImageElement>,
+  "height" | "sizes" | "src" | "srcSet" | "width"
+> & {
+  image: ResponsiveImageAsset;
+  priority?: boolean;
+  sizes: string;
+};
+
+const responsivePhoto = (
+  name: string,
+  widths: number[],
+  width: number,
+  height: number,
+): ResponsiveImageAsset => ({
+  src: `/assets/optimized/${name}-${widths[widths.length - 1]}.webp`,
+  srcSet: widths.map((photoWidth) => `/assets/optimized/${name}-${photoWidth}.webp ${photoWidth}w`).join(", "),
+  width,
+  height,
+});
+
 export const assets = {
-  logo: "/assets/landing-logo.png",
+  logo: responsivePhoto("landing-logo", [170, 300], 300, 355),
   instagram: "/assets/landing-instagram.png",
   facebook: "/assets/landing-facebook.png",
   snapchat: "/assets/landing-snapchat.png",
-  landingHero: "/assets/landing-hero.jpg",
-  storyExterior: "/assets/story-exterior.jpg",
-  eventsInterior: "/assets/events-interior.jpg",
+  landingHero: responsivePhoto("landing-hero", [640, 960, 1280, 1600, 1920], 2840, 2840),
+  storyExterior: responsivePhoto("story-exterior", [480, 720, 960, 1200, 1500], 1500, 1500),
+  eventsInterior: responsivePhoto("events-interior", [640, 960, 1280, 1440], 1440, 1440),
   instagramGrid: [
-    "/assets/instagram-1.jpg",
-    "/assets/instagram-2.jpg",
-    "/assets/instagram-3.jpg",
-    "/assets/instagram-4.jpg",
-    "/assets/instagram-5.jpg",
-    "/assets/instagram-6.jpg",
+    responsivePhoto("instagram-1", [360, 520, 720, 900], 1440, 1440),
+    responsivePhoto("instagram-2", [360, 520, 720, 900], 1508, 1524),
+    responsivePhoto("instagram-3", [360, 520, 720, 900], 3000, 4000),
+    responsivePhoto("instagram-4", [360, 520, 720, 900], 1228, 1562),
+    responsivePhoto("instagram-5", [360, 520, 720, 900], 1518, 1510),
+    responsivePhoto("instagram-6", [360, 520, 720, 900], 1522, 1496),
   ],
-  menuHero: "/assets/menu-hero.jpg",
-  menuBrunch: "/assets/menu-brunch.jpg",
-  menuLunch: "/assets/menu-lunch.jpg",
-  menuDinner: "/assets/landing-hero.jpg",
-  aboutHero: "/assets/about-hero.jpg",
-  aboutVideo: "/assets/about-video.jpg",
-  eventsHero: "/assets/events-interior.jpg",
+  menuHero: responsivePhoto("menu-hero", [640, 960, 1212], 1212, 1562),
+  menuBrunch: responsivePhoto("menu-brunch", [480, 720, 960, 1200], 1488, 1520),
+  menuLunch: responsivePhoto("menu-lunch", [480, 720, 960, 1200], 1200, 1602),
+  menuDinner: responsivePhoto("landing-hero", [640, 960, 1280, 1600, 1920], 2840, 2840),
+  aboutHero: responsivePhoto("about-hero", [640, 960, 1280, 1440], 1440, 1440),
+  aboutVideo: responsivePhoto("about-video", [640, 960, 1280, 1600], 2030, 1016),
+  eventsHero: responsivePhoto("events-interior", [640, 960, 1280, 1440], 1440, 1440),
   eventsCards: [
-    "/assets/events-card-brunch.jpg",
-    "/assets/events-card-beat.jpg",
-    "/assets/events-card-rnb.jpg",
+    responsivePhoto("events-card-brunch", [360, 520, 720, 960], 1644, 1636),
+    responsivePhoto("events-card-beat", [360, 520, 720, 960], 1648, 1628),
+    responsivePhoto("events-card-rnb", [360, 520, 720, 960], 1642, 1642),
   ],
   eventsClock: "/assets/events-clock.png",
-  contactHero: "/assets/contact-hero.jpg",
-  contactMap: "/assets/contact-map.jpg",
-  bookHero: "/assets/book-hero.jpg",
+  contactHero: responsivePhoto("contact-hero", [640, 960, 1280, 1440], 1440, 1440),
+  contactMap: responsivePhoto("contact-map", [640, 960, 1280, 1600], 2374, 1274),
+  bookHero: responsivePhoto("book-hero", [640, 960, 1280, 1600], 1950, 974),
   calendar: "/assets/calendar.png",
   clock: "/assets/clock.png",
   arrow: "/assets/expand-arrow.png",
@@ -44,12 +73,34 @@ const navItems = [
   { label: "Contact", href: "/contact", key: "contact" },
 ];
 
+export function OptimizedImage({
+  image,
+  priority = false,
+  sizes,
+  loading,
+  ...props
+}: OptimizedImageProps) {
+  return (
+    <img
+      {...props}
+      src={image.src}
+      srcSet={image.srcSet}
+      sizes={sizes}
+      width={image.width}
+      height={image.height}
+      loading={priority ? "eager" : (loading ?? "lazy")}
+      decoding="async"
+      fetchPriority={priority ? "high" : undefined}
+    />
+  );
+}
+
 export function SiteHeader({ active }: { active?: string }) {
   return (
     <header className="site-header">
       <nav className="top-nav" aria-label="Main navigation">
         <Link className="brand-link" href="/" aria-label="Cache 42 home">
-          <img src={assets.logo} alt="Cache 42" />
+          <OptimizedImage image={assets.logo} alt="Cache 42" sizes="85px" loading="eager" />
         </Link>
 
         <div className="nav-links">
@@ -75,7 +126,7 @@ export function PageHero({
   className,
 }: {
   title: string;
-  image: string;
+  image: ResponsiveImageAsset;
   active?: string;
   className?: string;
 }) {
@@ -83,7 +134,7 @@ export function PageHero({
     <>
       <SiteHeader active={active} />
       <section className={`page-hero ${className ?? ""}`} aria-labelledby="page-title">
-        <img src={image} alt="" />
+        <OptimizedImage image={image} alt="" sizes="100vw" priority />
         <div className="hero-overlay" />
         <h1 id="page-title">{title}</h1>
       </section>
@@ -96,7 +147,7 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div className="footer-inner">
         <div className="footer-brand">
-          <img src={assets.logo} alt="Cache 42" />
+          <OptimizedImage image={assets.logo} alt="Cache 42" sizes="85px" />
           <SocialLinks />
         </div>
 
@@ -128,13 +179,13 @@ export function SocialLinks({ small = false }: { small?: boolean }) {
   return (
     <div className={small ? "social-links social-links-small" : "social-links"} aria-label="Social links">
       <a href="#" aria-label="Instagram">
-        <img src={assets.instagram} alt="" />
+        <img src={assets.instagram} alt="" width="90" height="90" loading="lazy" decoding="async" />
       </a>
       <a href="#" aria-label="Facebook">
-        <img src={assets.facebook} alt="" />
+        <img src={assets.facebook} alt="" width="90" height="90" loading="lazy" decoding="async" />
       </a>
       <a href="#" aria-label="Snapchat">
-        <img src={assets.snapchat} alt="" />
+        <img src={assets.snapchat} alt="" width="90" height="90" loading="lazy" decoding="async" />
       </a>
     </div>
   );

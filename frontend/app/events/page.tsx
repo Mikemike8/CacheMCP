@@ -1,4 +1,4 @@
-import { assets, PageHero, SiteFooter } from "../components/SiteChrome";
+import { assets, OptimizedImage, PageHero, SiteFooter } from "../components/SiteChrome";
 
 const events = [
   {
@@ -35,12 +35,12 @@ export default function EventsPage() {
         <div className="event-grid">
           {events.map((event) => (
             <article className="event-card" key={event.title}>
-              <img src={event.image} alt="" />
+              <OptimizedImage image={event.image} alt="" sizes="(max-width: 760px) 90vw, 324px" />
               <div>
                 <h3>{event.title}</h3>
                 <p>{event.date}</p>
                 <p className="event-time">
-                  <img src={assets.eventsClock} alt="" />
+                  <img src={assets.eventsClock} alt="" width="100" height="100" loading="lazy" decoding="async" />
                   {event.time}
                 </p>
               </div>

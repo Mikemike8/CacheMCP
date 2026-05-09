@@ -20,6 +20,17 @@ npm run build
 npm start
 ```
 
+## Optimize Images
+
+Full-size photo originals live in `frontend/source-assets/photos`, and source
+graphics live in `frontend/source-assets/graphics`. The public site uses
+responsive WebP variants generated into `frontend/public/assets/optimized`.
+
+```bash
+cd frontend
+npm run optimize:images
+```
+
 ## Deploy to Netlify
 
 This repo includes `netlify.toml` for the `frontend/` app:

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { assets, SiteFooter, SiteHeader } from "./components/SiteChrome";
+import { assets, OptimizedImage, SiteFooter, SiteHeader } from "./components/SiteChrome";
 
 export default function LandingPage() {
   return (
@@ -7,7 +7,7 @@ export default function LandingPage() {
       <SiteHeader active="home" />
 
       <section className="landing-hero" aria-labelledby="landing-title">
-        <img src={assets.landingHero} alt="" />
+        <OptimizedImage image={assets.landingHero} alt="" sizes="100vw" priority />
         <div className="hero-overlay" />
         <div className="landing-hero-content">
           <p className="hero-eyebrow">Cache 42 Downtown Express</p>
@@ -47,7 +47,11 @@ export default function LandingPage() {
       </section>
 
       <section className="split-story" aria-label="Restaurant story and events">
-        <img src={assets.storyExterior} alt="Cache 42 storefront" />
+        <OptimizedImage
+          image={assets.storyExterior}
+          alt="Cache 42 storefront"
+          sizes="(max-width: 900px) 100vw, 50vw"
+        />
         <article>
           <h2>Our Story</h2>
           <p>
@@ -71,14 +75,24 @@ export default function LandingPage() {
             View Events
           </Link>
         </article>
-        <img src={assets.eventsInterior} alt="Cache 42 lounge interior" />
+        <OptimizedImage
+          image={assets.eventsInterior}
+          alt="Cache 42 lounge interior"
+          sizes="(max-width: 900px) 100vw, 50vw"
+        />
       </section>
 
       <section className="instagram-section">
         <h2>Follow Us @cache42_downtown</h2>
         <div className="instagram-grid">
-          {assets.instagramGrid.map((src, index) => (
-            <img src={src} alt="" key={src} className={`instagram-${index + 1}`} />
+          {assets.instagramGrid.map((image, index) => (
+            <OptimizedImage
+              image={image}
+              alt=""
+              key={image.src}
+              className={`instagram-${index + 1}`}
+              sizes="(max-width: 760px) 90vw, 326px"
+            />
           ))}
         </div>
       </section>

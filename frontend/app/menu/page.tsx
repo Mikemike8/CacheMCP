@@ -1,4 +1,4 @@
-import { assets, PageHero, SiteFooter } from "../components/SiteChrome";
+import { assets, OptimizedImage, PageHero, SiteFooter } from "../components/SiteChrome";
 
 const brunch = [
   ["Chicken & Waffles", "18"],
@@ -39,17 +39,17 @@ export default function MenuPage() {
 
       <section className="menu-section menu-section-light">
         <MenuList title="Brunch" items={brunch} accent="red" />
-        <img src={assets.menuBrunch} alt="Brunch plate" />
+        <OptimizedImage image={assets.menuBrunch} alt="Brunch plate" sizes="(max-width: 760px) 90vw, 499px" />
       </section>
 
       <section className="menu-section menu-section-dark">
-        <img src={assets.menuLunch} alt="Lunch plate" />
+        <OptimizedImage image={assets.menuLunch} alt="Lunch plate" sizes="(max-width: 760px) 90vw, 383px" />
         <MenuList title="Lunch" items={lunch} accent="white" />
       </section>
 
       <section className="menu-section menu-section-light">
         <MenuList title="Dinner" items={dinner} accent="red" />
-        <img src={assets.menuDinner} alt="Dinner plate" />
+        <OptimizedImage image={assets.menuDinner} alt="Dinner plate" sizes="(max-width: 760px) 90vw, 499px" />
       </section>
 
       <div className="menu-cta">

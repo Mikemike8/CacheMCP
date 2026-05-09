@@ -31,7 +31,15 @@ export default function BookTablePage() {
                 <option>5 guests</option>
                 <option>6 guests</option>
               </select>
-              <img className="field-icon" src={assets.arrow} alt="" aria-hidden="true" />
+              <img
+                className="field-icon"
+                src={assets.arrow}
+                alt=""
+                aria-hidden="true"
+                width="100"
+                height="100"
+                decoding="async"
+              />
             </span>
           </label>
 
@@ -72,7 +80,17 @@ function FormField({
       <span>{label}</span>
       <span className="input-shell">
         <input id={id} name={id} type={type} autoComplete={autoComplete} />
-        {icon ? <img className="field-icon" src={icon} alt="" aria-hidden="true" /> : null}
+        {icon ? (
+          <img
+            className="field-icon"
+            src={icon}
+            alt=""
+            aria-hidden="true"
+            width="100"
+            height="100"
+            decoding="async"
+          />
+        ) : null}
       </span>
     </label>
   );

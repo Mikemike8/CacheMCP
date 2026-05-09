@@ -95,16 +95,29 @@ Add shared UI here when a pattern appears on more than one page.
 
 ## Assets
 
-Assets are stored locally in `frontend/public/assets`. Use local assets rather
-than temporary Figma MCP URLs. Photo assets are JPEG where possible to reduce
-deploy size; transparent logos and small icons remain PNG.
+Published assets are stored locally in `frontend/public/assets`. Use local
+assets rather than temporary Figma MCP URLs. Transparent logos and small icons
+remain PNG.
+
+Full-size photo originals live in `frontend/source-assets/photos`. Source
+graphics, such as the logo, live in `frontend/source-assets/graphics`. They are
+not served directly by the site. Run `npm run optimize:images` from `frontend/`
+to generate responsive WebP variants in `frontend/public/assets/optimized`.
+
+Page code should render photos through `OptimizedImage` from
+`frontend/app/components/SiteChrome.tsx`. That component provides `srcset`,
+`sizes`, intrinsic dimensions, lazy loading by default, and high-priority loading
+for above-the-fold hero images.
 
 When adding new assets:
 
 1. Use descriptive filenames.
-2. Prefer JPEG for photos and PNG/SVG for transparent marks or icons.
-3. Keep file sizes reasonable before committing.
-4. Reference assets through the `assets` object in `SiteChrome.tsx` when shared.
+2. Place original photos in `frontend/source-assets/photos` and source graphics
+   in `frontend/source-assets/graphics`.
+3. Add the photo to `frontend/scripts/optimize-images.mjs`.
+4. Run `npm run optimize:images`.
+5. Reference the generated variants through the `assets` object in
+   `SiteChrome.tsx` when shared.
 
 ## Accessibility
 

@@ -1,4 +1,4 @@
-import { assets, HoursList, PageHero, SiteFooter, SocialLinks } from "../components/SiteChrome";
+import { assets, HoursList, OptimizedImage, PageHero, SiteFooter, SocialLinks } from "../components/SiteChrome";
 
 export default function ContactPage() {
   return (
@@ -34,7 +34,11 @@ export default function ContactPage() {
         </aside>
 
         <div className="map-frame">
-          <img src={assets.contactMap} alt="Map showing Cache 42 Downtown Express location" />
+          <OptimizedImage
+            image={assets.contactMap}
+            alt="Map showing Cache 42 Downtown Express location"
+            sizes="(max-width: 760px) 90vw, 1044px"
+          />
         </div>
       </section>
 
