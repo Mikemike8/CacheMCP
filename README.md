@@ -26,7 +26,10 @@ This repo includes `netlify.toml` for the `frontend/` app:
 
 - Base directory: `frontend`
 - Build command: `npm run build`
-- Publish directory: `.next`
+- Publish directory: `out`
+
+The site uses Next.js static export (`output: "export"`), so Netlify serves the
+generated static files directly.
 
 Deploy from the repo root or from `frontend/`:
 
