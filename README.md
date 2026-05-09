@@ -47,6 +47,11 @@ npm run deploy:netlify
 - `/contact`
 - `/book-a-table`
 
+## Design System
+
+Design tokens, responsive rules, page patterns, and asset guidelines are
+documented in [`frontend/docs/design-system.md`](frontend/docs/design-system.md).
+
 ## Figma Source
 
 Design URL:
