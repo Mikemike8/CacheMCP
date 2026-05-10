@@ -14,15 +14,30 @@ export default function BookTablePage() {
       </section>
 
       <section className="reservation-section" aria-label="Reservation form">
-        <form id="reservation-form" className="reservation-form">
-          <FormField label="Name" id="name" autoComplete="name" />
-          <FormField label="Email" id="email" type="email" autoComplete="email" />
-          <FormField label="Phone" id="phone" type="tel" autoComplete="tel" />
+        <form
+          id="reservation-form"
+          className="reservation-form"
+          name="booking"
+          method="POST"
+          action="/thank-you"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+        >
+          <input type="hidden" name="form-name" value="booking" />
+          <p className="form-hidden" aria-hidden="true">
+            <label>
+              Do not fill this out if you are human: <input name="bot-field" tabIndex={-1} />
+            </label>
+          </p>
+
+          <FormField label="Name" id="name" autoComplete="name" required />
+          <FormField label="Email" id="email" type="email" autoComplete="email" required />
+          <FormField label="Phone" id="phone" type="tel" autoComplete="tel" required />
 
           <label className="field">
             <span>Guests</span>
             <span className="input-shell">
-              <select id="guests" name="guests" aria-label="Guests" defaultValue="">
+              <select id="guests" name="guests" aria-label="Guests" defaultValue="" required>
                 <option value="" disabled />
                 <option>1 guest</option>
                 <option>2 guests</option>
@@ -43,8 +58,8 @@ export default function BookTablePage() {
             </span>
           </label>
 
-          <FormField label="Date" id="date" icon={assets.calendar} />
-          <FormField label="Time" id="time" icon={assets.clock} />
+          <FormField label="Date" id="date" type="date" icon={assets.calendar} required />
+          <FormField label="Time" id="time" type="time" icon={assets.clock} required />
 
           <label className="field field-wide">
             <span>Special Requests</span>
@@ -68,18 +83,20 @@ function FormField({
   type = "text",
   autoComplete,
   icon,
+  required = false,
 }: {
   label: string;
   id: string;
   type?: string;
   autoComplete?: string;
   icon?: string;
+  required?: boolean;
 }) {
   return (
     <label className="field">
       <span>{label}</span>
       <span className="input-shell">
-        <input id={id} name={id} type={type} autoComplete={autoComplete} />
+        <input id={id} name={id} type={type} autoComplete={autoComplete} required={required} />
         {icon ? (
           <img
             className="field-icon"

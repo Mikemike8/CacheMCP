@@ -848,6 +848,10 @@ img {
   gap: var(--space-5);
 }
 
+.form-hidden {
+  display: none;
+}
+
 .contact-form h2 {
   margin-bottom: var(--space-4);
   text-align: left;
@@ -1024,6 +1028,48 @@ img {
   grid-column: 1 / -1;
   height: var(--field-height);
   width: 100%;
+}
+
+.form-confirmation {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: var(--container-narrow);
+  min-height: clamp(28rem, 45vw, 38rem);
+  padding: var(--section-padding-block) var(--section-padding-inline);
+  text-align: center;
+}
+
+.form-confirmation .eyebrow {
+  color: var(--color-gold);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-ui);
+  line-height: var(--leading-ui);
+  margin: 0 0 var(--space-4);
+  text-transform: uppercase;
+}
+
+.form-confirmation h1 {
+  font-family: var(--font-display);
+  font-size: var(--text-page-title);
+  letter-spacing: var(--tracking-display);
+  line-height: var(--leading-tight);
+  margin: 0 0 var(--space-6);
+}
+
+.form-confirmation > p:not(.eyebrow) {
+  color: var(--color-muted);
+  margin: 0;
+}
+
+.confirmation-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  justify-content: center;
+  margin-top: var(--space-8);
 }
 
 @media (max-width: 1100px) {
