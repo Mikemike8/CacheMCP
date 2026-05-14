@@ -4,3 +4,33 @@ publish = "out"
 
 [build.environment]
 NODE_VERSION = "22"
+
+[[redirects]]
+from = "/about"
+to = "/about/"
+status = 301
+
+[[redirects]]
+from = "/book-a-table"
+to = "/book-a-table/"
+status = 301
+
+[[redirects]]
+from = "/contact"
+to = "/contact/"
+status = 301
+
+[[redirects]]
+from = "/events"
+to = "/events/"
+status = 301
+
+[[redirects]]
+from = "/menu"
+to = "/menu/"
+status = 301
+
+[[redirects]]
+from = "/thank-you"
+to = "/thank-you/"
+status = 301
