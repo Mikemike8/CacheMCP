@@ -97,48 +97,48 @@ export function OptimizedImage({
 
 export function SiteHeader({ active }: { active?: string }) {
   return (
-    <header className="site-header">
-      <nav className="top-nav" aria-label="Main navigation">
-        <Link className="brand-link" href="/" aria-label="Cache 42 home">
-          <OptimizedImage image={assets.logo} alt="Cache 42" sizes="85px" loading="eager" />
-        </Link>
+    <>
+      <a className="skip-link" href="#main-content">
+        Skip to main content
+      </a>
+      <header className="site-header">
+        <nav className="top-nav" aria-label="Main navigation">
+          <Link className="brand-link" href="/" aria-label="Cache 42 home">
+            <OptimizedImage image={assets.logo} alt="Cache 42" sizes="85px" loading="eager" />
+          </Link>
 
-        <div className="nav-links">
-          {navItems.map((item) => (
-            <Link className={active === item.key ? "active" : undefined} href={item.href} key={item.key}>
-              {item.label}
-            </Link>
-          ))}
-        </div>
+          <div className="nav-links">
+            {navItems.map((item) => (
+              <Link className={active === item.key ? "active" : undefined} href={item.href} key={item.key}>
+                {item.label}
+              </Link>
+            ))}
+          </div>
 
-        <Link className="reservation-link" href="/book-a-table">
-          Book a Table
-        </Link>
-      </nav>
-    </header>
+          <Link className="reservation-link" href="/book-a-table">
+            Book a Table
+          </Link>
+        </nav>
+      </header>
+    </>
   );
 }
 
 export function PageHero({
   title,
   image,
-  active,
   className,
 }: {
   title: string;
   image: ResponsiveImageAsset;
-  active?: string;
   className?: string;
 }) {
   return (
-    <>
-      <SiteHeader active={active} />
-      <section className={`page-hero ${className ?? ""}`} aria-labelledby="page-title">
-        <OptimizedImage image={image} alt="" sizes="100vw" priority />
-        <div className="hero-overlay" />
-        <h1 id="page-title">{title}</h1>
-      </section>
-    </>
+    <section className={`page-hero ${className ?? ""}`} aria-labelledby="page-title">
+      <OptimizedImage image={image} alt="" sizes="100vw" priority />
+      <div className="hero-overlay" />
+      <h1 id="page-title">{title}</h1>
+    </section>
   );
 }
 
@@ -176,17 +176,31 @@ export function SiteFooter() {
 }
 
 export function SocialLinks({ small = false }: { small?: boolean }) {
+  const socialLinks = [
+    {
+      href: "https://www.instagram.com/cache42_downtown/",
+      label: "Cache 42 on Instagram",
+      icon: assets.instagram,
+    },
+    {
+      href: "https://www.facebook.com/cache42downtown/",
+      label: "Cache 42 on Facebook",
+      icon: assets.facebook,
+    },
+    {
+      href: "https://www.snapchat.com/add/cache42downtown",
+      label: "Cache 42 on Snapchat",
+      icon: assets.snapchat,
+    },
+  ];
+
   return (
     <div className={small ? "social-links social-links-small" : "social-links"} aria-label="Social links">
-      <a href="#" aria-label="Instagram">
-        <img src={assets.instagram} alt="" width="90" height="90" loading="lazy" decoding="async" />
-      </a>
-      <a href="#" aria-label="Facebook">
-        <img src={assets.facebook} alt="" width="90" height="90" loading="lazy" decoding="async" />
-      </a>
-      <a href="#" aria-label="Snapchat">
-        <img src={assets.snapchat} alt="" width="90" height="90" loading="lazy" decoding="async" />
-      </a>
+      {socialLinks.map((link) => (
+        <a href={link.href} aria-label={link.label} key={link.label} rel="noopener noreferrer" target="_blank">
+          <img src={link.icon} alt="" width="90" height="90" loading="lazy" decoding="async" />
+        </a>
+      ))}
     </div>
   );
 }
