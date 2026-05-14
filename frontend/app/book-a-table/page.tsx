@@ -1,4 +1,5 @@
 import { assets, PageHero, SiteFooter, SiteHeader } from "../components/SiteChrome";
+import { NetlifyForm } from "../components/NetlifyForm";
 
 export default function BookTablePage() {
   return (
@@ -17,16 +18,11 @@ export default function BookTablePage() {
         </section>
 
         <section className="reservation-section" aria-label="Reservation form">
-          <form
+          <NetlifyForm
             id="reservation-form"
             className="reservation-form"
-            name="booking"
-            method="POST"
-            action="/thank-you/"
-            data-netlify="true"
-            netlify-honeypot="bot-field"
+            formName="booking"
           >
-            <input type="hidden" name="form-name" value="booking" />
             <p className="form-hidden" aria-hidden="true">
               <label>
                 Do not fill this out if you are human: <input name="bot-field" tabIndex={-1} />
@@ -72,7 +68,7 @@ export default function BookTablePage() {
             <button type="submit" className="submit-button">
               Book Now
             </button>
-          </form>
+          </NetlifyForm>
         </section>
 
         <SiteFooter />

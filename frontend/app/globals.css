@@ -969,6 +969,17 @@ img {
   display: none;
 }
 
+.form-status {
+  color: var(--color-red);
+  font-size: var(--text-sm);
+  line-height: var(--leading-body);
+  margin: 0;
+}
+
+.reservation-form .form-status {
+  grid-column: 1 / -1;
+}
+
 .contact-form h2 {
   margin-bottom: var(--space-4);
   text-align: left;

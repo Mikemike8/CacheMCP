@@ -1,4 +1,5 @@
 import { assets, HoursList, OptimizedImage, PageHero, SiteFooter, SiteHeader, SocialLinks } from "../components/SiteChrome";
+import { NetlifyForm } from "../components/NetlifyForm";
 
 export default function ContactPage() {
   return (
@@ -9,15 +10,10 @@ export default function ContactPage() {
         <PageHero title="Contact Us" image={assets.contactHero} className="contact-hero" />
 
         <section className="contact-section">
-          <form
+          <NetlifyForm
             className="contact-form"
-            name="contact"
-            method="POST"
-            action="/thank-you/"
-            data-netlify="true"
-            netlify-honeypot="bot-field"
+            formName="contact"
           >
-            <input type="hidden" name="form-name" value="contact" />
             <p className="form-hidden" aria-hidden="true">
               <label>
                 Do not fill this out if you are human: <input name="bot-field" tabIndex={-1} />
@@ -47,7 +43,7 @@ export default function ContactPage() {
               <textarea name="message" placeholder="Message" rows={7} required />
             </label>
             <button type="submit">Submit</button>
-          </form>
+          </NetlifyForm>
 
           <aside className="contact-card">
             <h2>Address</h2>
