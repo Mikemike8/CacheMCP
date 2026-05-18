@@ -1,4 +1,4 @@
-import { assets, OptimizedImage, PageHero, SiteFooter, SiteHeader } from "../components/SiteChrome";
+import { assets, PageHero, SiteFooter, SiteHeader } from "../components/SiteChrome";
 
 export default function AboutPage() {
   return (
@@ -19,9 +19,13 @@ export default function AboutPage() {
             vegetarian, vegan, and gluten-free options available, and a team ready to guide you through the menu,
             we aim to deliver an authentic and memorable Caribbean experience right here in Memphis.
           </p>
-          <figure className="video-preview" aria-label="Cache 42 dining room video preview">
-            <OptimizedImage image={assets.aboutVideo} alt="" sizes="(max-width: 760px) 90vw, 1039px" />
-            <span aria-hidden="true" />
+          <figure className="video-preview" aria-label="Cache 42 dining room video">
+            <video autoPlay loop muted playsInline preload="metadata" poster={assets.aboutVideo.src}>
+              <source
+                src="/assets/optimized/Logo_Animation_A_low-angle_medium_shot_shows_a_person_in_a_black_96LsVFLh.mp4"
+                type="video/mp4"
+              />
+            </video>
           </figure>
         </section>
 

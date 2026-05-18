@@ -844,37 +844,18 @@ img {
 
 .video-preview {
   margin: 0 auto;
-  max-width: var(--container-readable);
+  max-width: min(100%, 58rem);
   position: relative;
   width: 100%;
 }
 
-.video-preview img {
-  aspect-ratio: 1039 / 413;
+.video-preview video {
+  aspect-ratio: 16 / 9;
+  background: var(--color-black);
+  display: block;
   height: auto;
   object-fit: cover;
   width: 100%;
-}
-
-.video-preview span {
-  background: var(--color-black);
-  border-radius: 50%;
-  height: clamp(3.75rem, 7vw, 5.3rem);
-  left: 50%;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: clamp(3.75rem, 7vw, 5.3rem);
-}
-
-.video-preview span::after {
-  border-bottom: clamp(0.8rem, 1.8vw, 1.125rem) solid transparent;
-  border-left: clamp(1.15rem, 2.6vw, 1.75rem) solid var(--color-white);
-  border-top: clamp(0.8rem, 1.8vw, 1.125rem) solid transparent;
-  content: "";
-  left: 40%;
-  position: absolute;
-  top: 30%;
 }
 
 .events-section {
