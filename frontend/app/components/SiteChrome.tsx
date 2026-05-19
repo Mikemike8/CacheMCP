@@ -98,9 +98,6 @@ export function OptimizedImage({
 export function SiteHeader({ active }: { active?: string }) {
   return (
     <>
-      <a className="skip-link" href="#main-content">
-        Skip to main content
-      </a>
       <header className="site-header">
         <nav className="top-nav" aria-label="Main navigation">
           <Link className="brand-link" href="/" aria-label="Cache 42 home">

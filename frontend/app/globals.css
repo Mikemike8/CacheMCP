@@ -113,26 +113,6 @@ a {
   text-decoration: none;
 }
 
-.skip-link {
-  background: var(--color-gold);
-  color: var(--color-black);
-  font-weight: var(--font-weight-semibold);
-  left: var(--space-4);
-  letter-spacing: var(--tracking-body);
-  padding: var(--space-3) var(--space-4);
-  position: absolute;
-  top: var(--space-4);
-  transform: translateY(-180%);
-  transition: transform var(--transition-fast);
-  z-index: 20;
-}
-
-.skip-link:focus-visible {
-  outline: 2px solid var(--color-white);
-  outline-offset: 2px;
-  transform: translateY(0);
-}
-
 .sr-only {
   clip: rect(0 0 0 0);
   border: 0;
