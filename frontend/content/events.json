@@ -1,6 +1,13 @@
 {
   "events": [
     {
+      "title": "Saturday Brunch Block Party.",
+      "date": "May 28, 2026",
+      "time": "12:00 A.M - 5:00 P.M.",
+      "image": "/assets/optimized/events-card-brunch-720.webp",
+      "imageAlt": "Saturday Brunch Block Party event at Cache 42"
+    },
+    {
       "title": "Taste the Beat w/ Dj Babo",
       "date": "Every Friday",
       "time": "5:00 P.M. - 8:00 P.M.",
@@ -13,13 +20,6 @@
       "time": "4:00 P.M. - 10:00 P.M.",
       "image": "/assets/optimized/events-card-rnb-720.webp",
       "imageAlt": "R&B Block Party event at Cache 42"
-    },
-    {
-      "title": "Saturday Brunch Block Party.",
-      "date": "May 28, 2026",
-      "time": "12:00 A.M - 5:00 P.M.",
-      "image": "/assets/optimized/events-card-brunch-720.webp",
-      "imageAlt": "Saturday Brunch Block Party event at Cache 42"
     }
   ]
 }

@@ -50,8 +50,8 @@ export default function MenuPage() {
         <PageHero title="Menu" image={assets.menuHero} className="menu-hero" />
 
         <section className="menu-section menu-section-light">
-          <MenuList title="Brunch" items={brunch} accent="red" />
-          <OptimizedImage image={assets.menuBrunch} alt="Brunch plate" sizes="(max-width: 760px) 90vw, 499px" />
+          <MenuList title="Dinner" items={dinner} accent="red" />
+          <OptimizedImage image={assets.menuDinner} alt="Dinner plate" sizes="(max-width: 760px) 90vw, 499px" />
         </section>
 
         <section className="menu-section menu-section-dark">
@@ -60,8 +60,8 @@ export default function MenuPage() {
         </section>
 
         <section className="menu-section menu-section-light">
-          <MenuList title="Dinner" items={dinner} accent="red" />
-          <OptimizedImage image={assets.menuDinner} alt="Dinner plate" sizes="(max-width: 760px) 90vw, 499px" />
+          <MenuList title="Brunch" items={brunch} accent="red" />
+          <OptimizedImage image={assets.menuBrunch} alt="Brunch plate" sizes="(max-width: 760px) 90vw, 499px" />
         </section>
 
         <section className="menu-downloads" aria-labelledby="menu-downloads-title">
