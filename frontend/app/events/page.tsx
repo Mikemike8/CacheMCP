@@ -1,25 +1,7 @@
-import { assets, OptimizedImage, PageHero, SiteFooter, SiteHeader } from "../components/SiteChrome";
+import { assets, PageHero, SiteFooter, SiteHeader } from "../components/SiteChrome";
+import eventsContent from "../../content/events.json";
 
-const events = [
-  {
-    title: "Saturday Brunch Block Party",
-    date: "May 28, 2026",
-    time: "12:00 A.M - 5:00 P.M.",
-    image: assets.eventsCards[0],
-  },
-  {
-    title: "Taste the Beat w/ Dj Babo",
-    date: "Every Friday",
-    time: "5:00 P.M. - 8:00 P.M.",
-    image: assets.eventsCards[1],
-  },
-  {
-    title: "R&B Block Party",
-    date: "April 12, 2026",
-    time: "4:00 P.M. - 10:00 P.M.",
-    image: assets.eventsCards[2],
-  },
-];
+const events = eventsContent.events;
 
 export default function EventsPage() {
   return (
@@ -38,10 +20,13 @@ export default function EventsPage() {
           <div className="event-grid">
             {events.map((event) => (
               <article className="event-card" key={event.title}>
-                <OptimizedImage
-                  image={event.image}
-                  alt={`${event.title} event at Cache 42`}
-                  sizes="(max-width: 760px) 90vw, 324px"
+                <img
+                  src={event.image}
+                  alt={event.imageAlt || `${event.title} event at Cache 42`}
+                  width="720"
+                  height="540"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div>
                   <h3>{event.title}</h3>
