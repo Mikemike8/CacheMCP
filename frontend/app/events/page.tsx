@@ -30,7 +30,10 @@ export default function EventsPage() {
                 />
                 <div>
                   <h3>{event.title}</h3>
-                  <p>{event.date}</p>
+                  <p className="event-date">
+                    <img src={assets.calendar} alt="" width="100" height="100" loading="lazy" decoding="async" />
+                    {event.date}
+                  </p>
                   <p className="event-time">
                     <img src={assets.eventsClock} alt="" width="100" height="100" loading="lazy" decoding="async" />
                     {event.time}

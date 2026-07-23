@@ -1,4 +1,4 @@
-import { assets, HoursList, OptimizedImage, PageHero, SiteFooter, SiteHeader, SocialLinks } from "../components/SiteChrome";
+import { assets, HoursList, PageHero, SiteFooter, SiteHeader, SocialLinks } from "../components/SiteChrome";
 import { NetlifyForm } from "../components/NetlifyForm";
 
 export default function ContactPage() {
@@ -61,10 +61,11 @@ export default function ContactPage() {
           </aside>
 
           <div className="map-frame">
-            <OptimizedImage
-              image={assets.contactMap}
-              alt="Map showing Cache 42 Downtown Express location"
-              sizes="(max-width: 760px) 90vw, 1044px"
+            <iframe
+              title="Cache 42 Downtown Express on Google Maps"
+              src="https://www.google.com/maps?q=97%20N%20Main%20St.%20Memphis%2C%20TN%2038103-5002&output=embed"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
             />
           </div>
         </section>

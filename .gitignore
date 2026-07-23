@@ -10,3 +10,4 @@ frontend/out/
 frontend/.env
 .DS_Store
 npm-debug.log*
+cache42/
