@@ -44,7 +44,7 @@ export default function EventsPage() {
           </div>
           <p className="events-note">
             For the latest events and updates, follow us on Instagram and Facebook{" "}
-            <strong>@cache42downtown</strong>
+            <strong>@cache42_downtown</strong>
           </p>
         </section>
 
